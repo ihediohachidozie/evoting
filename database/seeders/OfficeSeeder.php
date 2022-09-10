@@ -15,7 +15,9 @@ class OfficeSeeder extends Seeder
      */
     public function run()
     {
-        $offices = array("president", "vice president", "treasurer I", "treasurer II", "financial secretary I", "financial secretary II", "provost");
+        $offices = array("chairman", "vice chairman", "branch secretary", 'assistant branch secretary',
+        "treasurer", "financial secretary", "pro", "welfare officer", 'wilat rep', 'next generation rep',
+        'aviation mode rep', 'maritime mode rep', 'rail mode rep', 'pipeline mode rep', 'logistics mode rep');
 
         foreach ($offices as $office) {
             DB::table('offices')->insert([
