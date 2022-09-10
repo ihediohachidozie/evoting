@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('member_id');
             $table->integer('office_id');
             $table->string('image');
+            $table->string('norminationform');
             $table->timestamps();
         });
     }
