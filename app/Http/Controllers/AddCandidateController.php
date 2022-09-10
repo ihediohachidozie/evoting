@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
+use App\Models\Office;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class AddCandidateController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.candidate.index');
     }
 
     /**
@@ -25,6 +27,10 @@ class AddCandidateController extends Controller
     public function create()
     {
         //
+        $members = Member::pluck('name', 'id');
+        $offices = Office::pluck('name', 'id');
+        return view('pages.candidate.create', compact('members', 'offices'));
+
     }
 
     /**
