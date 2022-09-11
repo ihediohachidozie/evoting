@@ -33,6 +33,19 @@ class AddCandidateController extends Controller
 
     }
 
+    public function validateData()
+    {
+        # code...
+        return request()->validate([
+            'member_id' => 'required',
+            'office_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'norminationform' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
+        ]);
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -41,7 +54,22 @@ class AddCandidateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateData();
+
+       // dd($request->all());
+
+       $candidate = Candidate::create([
+        'member_id' => $request->member_id,
+        'office_id' => $request->office_id,
+        'image' => $request->image->store('assets/candidates', 'public'),
+        'norminationform' => $request->norminationform->store('assets/norminationforms', 'public')
+    ]);
+
+    $candidate->save();
+    $image = Image::make(public_path('storage/' . $candidate->image))->fit(640, 428);
+    $image->save();
+    $norminationForm = Image::make(public_path('storage/' . $candidate->norminationform));
+    $norminationForm->save();
     }
 
     /**

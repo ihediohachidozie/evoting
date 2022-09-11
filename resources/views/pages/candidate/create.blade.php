@@ -85,31 +85,32 @@
                 </div>
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3"></h4>
-                    <form class="needs-validation" novalidate>
+                    <form class="needs-validation" novalidate method="POST" action="{{route('candidates.store')}}">
+                        @csrf
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <label for="country" class="form-label">Country</label>
-                                <select class="form-select" id="country" required>
+                                <label for="member" class="form-label">Member' Name</label>
+                                <select class="form-select" id="member" name="member_id" required>
                                     <option value="">Choose...</option>
                                     @foreach ($members as $key => $value)
-                                        <option>{{ $value }}</option>
+                                        <option value="{{$key}}">{{ $value }}</option>
                                     @endforeach
                                 </select>
                                 <div class="invalid-feedback">
-                                    Please select your name.
+                                    Please select your Member Name.
                                 </div>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="state" class="form-label">State</label>
-                                <select class="form-select" id="state" required>
+                                <label for="office" class="form-label">Office</label>
+                                <select class="form-select" id="office" name="office_id" required>
                                     <option value="">Choose...</option>
                                     @foreach ($offices as $key => $value)
-                                        <option>{{ strtoupper($value) }}</option>
+                                        <option value="{{$key}}">{{ strtoupper($value) }}</option>
                                     @endforeach
                                 </select>
                                 <div class="invalid-feedback">
-                                    Please provide a valid state.
+                                    Please provide a valid Office.
                                 </div>
                             </div>
 
@@ -117,12 +118,18 @@
                         </div>
 
                         <div class="mb-3 mt-3">
-                            <label for="formFile" class="form-label">Upload Normination file</label>
-                            <input class="form-control" type="file" id="formFile">
+                            <label for="formFile" class="form-label">Upload Normination file (pdf format must be less than 600kb)</label>
+                            <input class="form-control" type="file" id="norminationform" name="norminationform">
+                            <div class="invalid-feedback">
+                                Please upload the normination form.
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Upload Passport photograph</label>
-                            <input class="form-control" type="file" id="formFile">
+                            <label for="formFile" class="form-label">Upload Passport photograph (png, jpeg, jpg or gif format must be less than 300kb)</label>
+                            <input class="form-control" type="file" id="image" name="image">
+                            <div class="invalid-feedback">
+                                Please upload the photograph.
+                            </div>
                         </div>
 
 
