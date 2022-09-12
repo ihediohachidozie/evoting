@@ -26,7 +26,7 @@
             </div>
             <form method="POST" accept="normination.store">
                 @csrf
-                <input type="hidden" name="norminaing_id" value="{{$id}}">
+                <input type="hidden" name="norminating_id" value="{{ $id }}">
 
                 <div class="row">
                     <div class="col">
@@ -51,8 +51,13 @@
                 </div>
                 <button class="w-100 btn btn-primary btn-lg my-4" type="submit">Norminate</button>
             </form>
+            @if (session('status'))
+                <div class="alert alert-danger text-center">
+                    {{ session('status') }}
+                </div>
+            @endif
             <hr class="my-4">
-            <h2 class="display-6 text-center my-4">Compare plans</h2>
+            <h2 class="display-6 text-center my-4">Nominated Members</h2>
 
             <div class="table-responsive">
                 <table class="table text-center">
@@ -65,20 +70,19 @@
                     </thead>
                     <tbody>
                         @foreach ($norminations as $normination)
-
-                        <tr>
-                            <td>
-                                <svg class="bi" width="24" height="24">
-                                    <use xlink:href="#check" />
-                                </svg>
-                            </td>
-                            <td>
-                                {{$normination->member->name}}
-                            </td>
-                            <td>
-                                {{$normination->office->name}}
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <svg class="bi" width="24" height="24">
+                                        <use xlink:href="#check" />
+                                    </svg>
+                                </td>
+                                <td>
+                                    {{ $normination->member->name }}
+                                </td>
+                                <td>
+                                    {{ strtoupper($normination->office->name) }}
+                                </td>
+                            </tr>
                         @endforeach
 
                     </tbody>

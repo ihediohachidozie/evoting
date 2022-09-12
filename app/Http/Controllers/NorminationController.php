@@ -68,17 +68,37 @@ class NorminationController extends Controller
      */
     public function store(Request $request)
     {
+       // dd($request->all());
 
-        $this->validation();
+        //$this->validation();
+        if($this->check($request->id, $request->candidate_id, $request->office_id) == 0)
+        {
+            Normination::create([
+                'member_id' => $request->candidate_id,
+                'office_id' => $request->office_id,
+                'norminating_id' => $request->norminating_id
+            ])->save();
 
-        Normination::create([
-            'member_id' => $request->candidate_id,
-            'office_id' => $request->office_id,
-            'norminating_id' => $request->id
-        ])->save();
+            return redirect()->route('normination.index', ['id' => $request->id]);
+        }else{
+            return redirect()->route('normination.index', ['id' => $request->id])->with('status', 'Member already norminated!');
 
-        return redirect()->route('normination.index', ['id' => $request->id]);
+        }
 
+
+    }
+    public function check($id, $memberid, $officeid)
+    {
+        return Normination::where([
+            ['norminating_id', '=', $id],
+            ['member_id', '=', $memberid],
+            ['office_id', '=', $officeid]
+            ])
+            ->orWhere([
+                ['norminating_id', '=', $id],
+                ['member_id', '=', $memberid],
+            ])
+            ->count();
     }
 
     public function validation()
