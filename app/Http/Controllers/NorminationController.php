@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Vote;
+use App\Models\Normination;
 use Illuminate\Http\Request;
 
-class VoteController extends Controller
+class NorminationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class VoteController extends Controller
      */
     public function index()
     {
-        return view('pages.vote.index', compact('memberid'));
+        //
     }
 
     /**
@@ -22,20 +22,10 @@ class VoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $id = $request->id;
-        return view('pages.vote.create', compact('id'));
+        //
     }
-
-    public function ballotcard(Request $request)
-    {
-
-       # $memberId = $id;
-       $id = $request->id;
-        return view('pages.vote.create', compact('id'));
-    }
-
 
     /**
      * Store a newly created resource in storage.
@@ -51,10 +41,10 @@ class VoteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Vote  $vote
+     * @param  \App\Models\Normination  $normination
      * @return \Illuminate\Http\Response
      */
-    public function show(Vote $vote)
+    public function show(Normination $normination)
     {
         //
     }
@@ -62,12 +52,11 @@ class VoteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Vote  $vote
+     * @param  \App\Models\Normination  $normination
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vote $vote)
+    public function edit(Normination $normination)
     {
-        dd($vote);
         //
     }
 
@@ -75,10 +64,10 @@ class VoteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Vote  $vote
+     * @param  \App\Models\Normination  $normination
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vote $vote)
+    public function update(Request $request, Normination $normination)
     {
         //
     }
@@ -86,10 +75,10 @@ class VoteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Vote  $vote
+     * @param  \App\Models\Normination  $normination
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vote $vote)
+    public function destroy(Normination $normination)
     {
         //
     }
