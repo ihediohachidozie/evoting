@@ -15,4 +15,9 @@ class Member extends Model
     {
         return $this->hasOne(Candidate::class);
     }
+
+    public function normination()
+    {
+        return $this->hasOne(Normination::class);
+    }
 }

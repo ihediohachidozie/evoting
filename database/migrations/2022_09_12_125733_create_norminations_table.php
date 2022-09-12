@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('norminations', function (Blueprint $table) {
             $table->id();
             $table->integer('member_id');
-            $table->integer('candidate_id');
+            $table->integer('norminating_id');
             $table->integer('office_id');
             $table->timestamps();
         });

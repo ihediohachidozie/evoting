@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\NorminationController;
 use App\Http\Controllers\AddCandidateController;
 use App\Http\Controllers\AccreditationController;
 
@@ -27,3 +28,8 @@ Route::post('/accreditation', [AccreditationController::class, 'accredit'])->nam
 
 Route::resource('vote', VoteController::class);
 Route::get('vote', [VoteController::class, 'ballotcard'])->name('ballot-card');
+
+Route::resource('normination', NorminationController::class);
+Route::get('/access', [NorminationController::class, 'checkmember'])->name('normination.member');
+Route::post('/normination/form', [NorminationController::class, 'showform'])->name('show-form');
+
