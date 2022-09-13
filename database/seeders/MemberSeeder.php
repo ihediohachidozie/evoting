@@ -475,7 +475,7 @@ class MemberSeeder extends Seeder
 
         foreach($members as $member)
         {
-            $member['pin'] = random_int(10000, 99999);
+            $member['pin'] = random_int(1000, 9999);
             Member::create($member);
 
 

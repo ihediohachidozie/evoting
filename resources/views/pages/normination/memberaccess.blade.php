@@ -19,10 +19,8 @@
         <main>
             <div class="py-5 text-center">
 
-                <h2>Members' Confirmation</h2>
-                <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required
-                    form group has a validation state that can be triggered by attempting to submit the form without
-                    completing it.</p>
+                <h2>Membership Confirmation</h2>
+                <p class="lead">To norminate a member for an electorial office, kindly enter your CILT Membership number below to comfirm your membership. </p>
             </div>
 
             <form class="needs-validation my-4" action="{{ route('show-form') }}" method="POST">
@@ -30,7 +28,7 @@
                 <div class="text-center">
                     <input class="form-control my-4" placeholder="Enter your pin" type="text" name="pin"
                         id="pin">
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Accreditate</button>
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">Confirm</button>
                 </div>
             </form>
             @if (session('status'))

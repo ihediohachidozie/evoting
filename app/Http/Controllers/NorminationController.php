@@ -35,7 +35,7 @@ class NorminationController extends Controller
 
     public function showform(Request $request)
     {
-        $pin = Member::wherePin($request->pin)->first();
+        $pin = Member::whereCiltno($request->pin)->first();
 
         if($pin != null){
             Member::find($pin->id)->update(
@@ -70,7 +70,7 @@ class NorminationController extends Controller
     {
        // dd($request->all());
 
-        //$this->validation();
+        $this->validation();
         if($this->check($request->id, $request->candidate_id, $request->office_id) == 0)
         {
             Normination::create([
@@ -104,9 +104,10 @@ class NorminationController extends Controller
     public function validation()
     {
         return request()->validate([
-            'member_id' => 'required',
+            'candidate_id' => 'required',
             'office_id' => 'required',
-            'norminating_id' => 'required'
+            'norminating_id' => 'required',
+
         ]);
     }
 

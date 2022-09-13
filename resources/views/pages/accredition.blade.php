@@ -19,10 +19,8 @@
         <main>
             <div class="py-5 text-center">
 
-                <h2>Members' Accreditation</h2>
-                <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required
-                    form group has a validation state that can be triggered by attempting to submit the form without
-                    completing it.</p>
+                <h2>Membership Accreditation & Voting</h2>
+                <p class="lead">To vote members for an electorial office, kindly enter your Voter's Eligibility Number (VEN) below to comfirm your eligibility.</p>
             </div>
 
             <form class="needs-validation my-4" action="{{ route('accreditation.accredit') }}" method="POST">
