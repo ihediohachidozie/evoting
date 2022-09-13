@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('member_id');
             $table->integer('office_id');
-            $table->string('image');
-            $table->string('norminationform');
+            $table->string('image')->nullable();
+            $table->string('norminationform')->nullable();
             $table->timestamps();
         });
     }

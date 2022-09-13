@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Member;
 use App\Models\Office;
 use App\Models\Candidate;
+use App\Models\Normination;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Redirect;
 
 class AddCandidateController extends Controller
 {
@@ -39,8 +42,8 @@ class AddCandidateController extends Controller
         return request()->validate([
             'member_id' => 'required',
             'office_id' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'norminationform' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:1048',
+            'norminationform' => 'required|mimes:pdf|max:2048'
 
         ]);
     }
@@ -56,7 +59,7 @@ class AddCandidateController extends Controller
     {
         $this->validateData();
 
-       // dd($request->all());
+       //dd($request->all());
 
        $candidate = Candidate::create([
         'member_id' => $request->member_id,
@@ -65,13 +68,58 @@ class AddCandidateController extends Controller
         'norminationform' => $request->norminationform->store('assets/norminationforms', 'public')
     ]);
 
-    $candidate->save();
-    $image = Image::make(public_path('storage/' . $candidate->image))->fit(640, 428);
-    $image->save();
-    $norminationForm = Image::make(public_path('storage/' . $candidate->norminationform));
-    $norminationForm->save();
-    }
+   // $candidate->save();
+   // $image = Image::make(public_path('storage/' . $candidate->image))->fit(640, 428);
+   // $image->save();
+    //$norminationForm = Image::make(public_path('storage/' . $candidate->norminationform));
+    //$norminationForm->save();
+/**
+ * $image = Image::make(public_path('storage/' . $vehicle->img_url))->fit(640, 428);
+*  $image->save();
+ */
+        $fileName = time().'_'.$request->member_id.'.'.$request->norminationform->extension();
 
+        $request->norminationform->move(public_path('assets/norminationforms'), $fileName);
+
+        $image = time().'_'.$request->member_id.'.'.$request->image->extension();
+
+        $image = Image::make(public_path('assets/candidates' . $image))->fit(640, 428);
+
+        $image->save();
+
+        //$request->image->move(public_path('assets/candidates'), $image);
+
+        return back()->with('success','You have successfully submitted your form.');
+
+
+
+    }
+    public function showform(Request $request)
+    {
+        // confirm membership and normination ...
+
+        $pin = Member::whereCiltno($request->pin)->first();
+
+        if($pin != null){
+            $count = Normination::where('member_id', $pin->id)->get();
+            if($count != null){
+                if(count($count )> 1){
+                    return Redirect::route('candidates.create');
+                }else{
+                    $status = 'You have not been norminated !';
+                }
+            }else{
+                $status = 'You have not been norminated !';
+            }
+
+        }else{
+
+            $status = 'Member does not exist !';
+        }
+
+        return back()->with(['status' => $status]);
+
+    }
     /**
      * Display the specified resource.
      *

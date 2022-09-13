@@ -17,16 +17,16 @@
         @include('pages.partials.nav')
 
         <main>
-            <div class="py-5 text-center">
+            <div class="py-2 text-center">
 
                 <h2>Membership Confirmation</h2>
                 <p class="lead">To norminate a member for an electorial office, kindly enter your CILT Membership number below to comfirm your membership. </p>
             </div>
 
-            <form class="needs-validation my-4" action="{{ route('show-form') }}" method="POST">
+            <form class="needs-validation my-2" action="{{ route('show-form') }}" method="POST">
                 @csrf
                 <div class="text-center">
-                    <input class="form-control my-4" placeholder="Enter your pin" type="text" name="pin"
+                    <input class="form-control my-4" placeholder="Enter your CILT Membership number" type="text" name="pin"
                         id="pin">
                     <button class="w-100 btn btn-primary btn-lg" type="submit">Confirm</button>
                 </div>

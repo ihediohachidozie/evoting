@@ -22,7 +22,10 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::resource('candidates', AddCandidateController::class);
+Route::post('/candidates/form', [AddCandidateController::class, 'showform'])->name('candidate.form');
+
 Route::get('/accreditation', [AccreditationController::class, 'showform'])->name('accreditation.form');
 Route::post('/accreditation', [AccreditationController::class, 'accredit'])->name('accreditation.accredit');
 

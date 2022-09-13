@@ -17,16 +17,16 @@
         @include('pages.partials.nav')
 
         <main>
-            <div class="py-5 text-center">
+            <div class="py-2 text-center">
 
                 <h2>Membership Accreditation & Voting</h2>
                 <p class="lead">To vote members for an electorial office, kindly enter your Voter's Eligibility Number (VEN) below to comfirm your eligibility.</p>
             </div>
 
-            <form class="needs-validation my-4" action="{{ route('accreditation.accredit') }}" method="POST">
+            <form class="needs-validation my-2" action="{{ route('accreditation.accredit') }}" method="POST">
                 @csrf
                 <div class="text-center">
-                    <input class="form-control my-4" placeholder="Enter your pin" type="text" name="pin"
+                    <input class="form-control my-4" placeholder="Enter your Voter's Eligibility Number (VEN)" type="text" name="pin"
                         id="pin">
                     <button class="w-100 btn btn-primary btn-lg" type="submit">Accreditate</button>
                 </div>

@@ -17,12 +17,10 @@
         @include('pages.partials.nav')
 
         <main>
-            <div class="py-5 text-center">
+            <div class="py-2 text-center">
 
-                <h2>Members' Normination</h2>
-                <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required
-                    form group has a validation state that can be triggered by attempting to submit the form without
-                    completing it.</p>
+                <h2>Members Normination</h2>
+                <p class="lead">Norminate candidates of your choice for CILT CRS branch 2022 Leadership</p>
             </div>
             <form method="POST" accept="normination.store">
                 @csrf
