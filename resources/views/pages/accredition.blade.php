@@ -19,7 +19,7 @@
         <main>
             <div class="py-2 text-center">
 
-                <h2>Membership Accreditation & Voting</h2>
+                <h2>Accreditation & Voting</h2>
                 <p class="lead">To vote members for an electorial office, kindly enter your Voter's Eligibility Number (VEN) below to comfirm your eligibility.</p>
             </div>
 
