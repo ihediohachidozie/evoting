@@ -36,7 +36,7 @@
                         <div class="container">
                             <div class="carousel-caption text-start">
 
-                                <p>Join as a member and you can contribute to building a sustainable, prosperous future for aviation and a better future for yourself</p>
+                                <p>Join as a member and you can contribute to building a sustainable, prosperous future for Transport and a better future for yourself</p>
                                 <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         <div class="container">
                             <div class="carousel-caption text-end">
 
-                                <p>Join as a member and you can contribute to building a sustainable, prosperous future for aviation and a better future for yourself</p>
+                                <p>Join as a member and you can contribute to building a sustainable, prosperous future for Transport and a better future for yourself</p>
                                 <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
                             </div>
                         </div>

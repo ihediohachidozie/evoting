@@ -17,17 +17,49 @@
         @include('pages.partials.nav')
 
         <main>
+            <div class="text-center">
+
+                <h3>Chairman</h3>
+                <hr class="my-4">
+            </div>
             <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="{{asset('assets/images/image.jpg')}}"
-                            class="card-img-top" alt="...">
+                        <img src="{{ asset('assets/images/image.jpg') }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                <input class="form-check-input" type="radio" name="chairman" id="exampleRadios1"
                                     value="option1" checked>
                                 <label class="form-check-label" for="exampleRadios1">
-                                    Default radio {{$id}}
+                                    Chairman 1
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('assets/images/image.jpg') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="chairman" id="exampleRadios2"
+                                    value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Chairman 2
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('assets/images/image.jpg') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="chairman" id="exampleRadios3"
+                                    value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios3">
+                                    Chairman 3
                                 </label>
                             </div>
                         </div>
@@ -37,12 +69,65 @@
             </div>
 
             <hr class="my-4">
+            <div class="text-center">
 
+                <h3>Vice Chairman</h3>
+                <hr class="my-4">
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('assets/images/image.jpg') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="vicechairman" id="vicechairman1"
+                                    value="option1" checked>
+                                <label class="form-check-label" for="vicechairman1">
+                                    Vice Chairman 1
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('assets/images/image.jpg') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="vicechairman" id="vicechairman2"
+                                    value="option1" checked>
+                                <label class="form-check-label" for="vicechairman2">
+                                    Vice Chairman 2
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('assets/images/image.jpg') }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="vicechairman" id="vicechairman3"
+                                    value="option1" checked>
+                                <label class="form-check-label" for="vicechairman3">
+                                    Vice Chairman 3
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="w-100 btn btn-primary btn-lg my-4" type="submit">Vote</button>
 
         </main>
-
         @include('pages.partials.footer')
     </div>
+
+
+
+
 
 
 
