@@ -82,7 +82,7 @@
                 <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
             </form>
             @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-block">
+            <div class="alert alert-success alert-block my-4">
                 <button type="button" class="close" data-dismiss="alert">×</button>
                     <strong>{{ $message }}</strong>
             </div>
