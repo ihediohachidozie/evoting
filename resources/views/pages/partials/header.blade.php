@@ -43,12 +43,13 @@
             }
         }
     </style>
-
-
+    <!-- Custom styles for this template -->
+    <link href="{{asset('css/carousel.css')}}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{asset('css/pricing.css')}}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="{{asset('css/form-validation.css')}}" rel="stylesheet">
+
+<script src="{{asset('js/bootstrap.bundle.min.js')}}" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 
 
 </head>

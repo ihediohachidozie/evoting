@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-@include('pages.partials.head')
+@include('pages.partials.header')
 
 <body>
 
@@ -13,31 +13,81 @@
         </symbol>
     </svg>
 
-    <div class="container py-3">
+    <div class="container">
         @include('pages.partials.nav')
 
         <main>
-            <div class="py-5 text-center">
+            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ asset('assets/images/aircraft.jpg') }}" width="100%" height="100%"
+                            alt="" srcset="">
 
-                <h2>Members' Accreditation</h2>
-                <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required
-                    form group has a validation state that can be triggered by attempting to submit the form without
-                    completing it.</p>
+                        <div class="container">
+                            <div class="carousel-caption text-start">
+
+                                <p>Join as a member and you can contribute to building a sustainable, prosperous future for aviation and a better future for yourself</p>
+                                <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('assets/images/train.jpg') }}" width="100%" height="100%" alt=""
+                            srcset="">
+
+                        <div class="container">
+                            <div class="carousel-caption">
+
+                                <p>Explore the issues that matter in the industry, network with fellow professionals and drive your career forward.</p>
+                                <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('assets/images/ship.jpg') }}" width="100%" height="100%" alt=""
+                            srcset="">
+
+                        <div class="container">
+                            <div class="carousel-caption text-end">
+
+                                <p>Join as a member and you can contribute to building a sustainable, prosperous future for aviation and a better future for yourself</p>
+                                <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('assets/images/truck.jpg') }}" width="100%" height="100%" alt=""
+                            srcset="">
+
+                        <div class="container">
+                            <div class="carousel-caption text-end">
+
+                                <p>Explore the issues that matter in the industry, network with fellow professionals and drive your career forward.</p>
+                                <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
 
-            <form class="needs-validation my-4" action="{{ route('accreditation.accredit') }}" method="POST">
-                @csrf
-                <div class="text-center">
-                    <input class="form-control my-4" placeholder="Enter your pin" type="text" name="pin"
-                        id="pin">
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Accreditate</button>
-                </div>
-            </form>
-            @if (session('status'))
-                <div class="alert alert-danger text-center">
-                    {{ session('status') }}
-                </div>
-            @endif
 
 
         </main>
