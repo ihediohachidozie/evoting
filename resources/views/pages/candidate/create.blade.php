@@ -33,10 +33,10 @@
                     <div class="col-md-6">
                         <label for="member" class="form-label">Member' Name</label>
                         <select class="form-select" id="member" name="member_id" required>
-                            <option value="">Choose...</option>
-                            @foreach ($members as $key => $value)
-                                <option value="{{ $key }}">{{ $value }}</option>
-                            @endforeach
+
+                                <option value="{{ $norminated[0]->member['id'] }}">
+                                    {{ strtoupper($norminated[0]->member['name']) }}</option>
+
                         </select>
                         <div class="invalid-feedback">
                             Please select your Member Name.
@@ -44,12 +44,13 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label for="office" class="form-label">Office</label>
+                        <label for="office" class="form-label">Offices Norminated</label>
                         <select class="form-select" id="office" name="office_id" required>
                             <option value="">Choose...</option>
-                            @foreach ($offices as $key => $value)
-                                <option value="{{ $key }}">{{ strtoupper($value) }}</option>
-                            @endforeach
+                            @for ($i = 0; $i < count($norminated); $i++)
+                                <option value="{{ $norminated[$i]->office['id'] }}">
+                                    {{ strtoupper($norminated[$i]->office['name']) }}</option>
+                            @endfor
                         </select>
                         <div class="invalid-feedback">
                             Please provide a valid Office.
@@ -82,11 +83,10 @@
                 <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
             </form>
             @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-block my-4">
-                <button type="button" class="close" data-dismiss="alert">×</button>
+                <div class="alert alert-success alert-block my-4">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
                     <strong>{{ $message }}</strong>
-            </div>
-
+                </div>
             @endif
         </main>
 

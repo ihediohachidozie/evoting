@@ -47,9 +47,9 @@ class MemberSeeder extends Seeder
             [
              "id"=> 5,
              "name"=> "Funmilayo Loremikan",
-             "ciltno"=> "NA",
+             "ciltno"=> 201884,
              "membershipstatus"=> "FCILT",
-             "email"=> "NA"
+             "email"=> "funmilore@yahoo.com"
             ],
             [
              "id"=> 6,
@@ -70,7 +70,7 @@ class MemberSeeder extends Seeder
              "name"=> " Abasi-Akara Imaobong Achiever",
              "ciltno"=> 205495,
              "membershipstatus"=> "CMILT",
-             "email"=> "NA"
+             "email"=> "achiever475@yahoo.com"
             ],
             [
              "id"=> 9,
@@ -91,7 +91,7 @@ class MemberSeeder extends Seeder
              "name"=> " Utan Uye Utan",
              "ciltno"=> 200910,
              "membershipstatus"=> "CMILT",
-             "email"=> "NA"
+             "email"=> "emmyutan@yahoo.com"
             ],
             [
              "id"=> 12,
@@ -119,7 +119,7 @@ class MemberSeeder extends Seeder
              "name"=> " Nwabuba Udonna Benjamin",
              "ciltno"=> 205472,
              "membershipstatus"=> "MILT",
-             "email"=> "NA"
+             "email"=> "nwabubaudonna@gmail.com"
             ],
             [
              "id"=> 16,
@@ -133,7 +133,7 @@ class MemberSeeder extends Seeder
              "name"=> " Bello Ibrahim Yahaya",
              "ciltno"=> 205686,
              "membershipstatus"=> "MILT",
-             "email"=> "NA"
+             "email"=> "bello_ib2003@yahoo.com"
             ],
             [
              "id"=> 18,
@@ -161,7 +161,7 @@ class MemberSeeder extends Seeder
              "name"=> "Kanu Collins Chukwuemeka",
              "ciltno"=> 205673,
              "membershipstatus"=> "MILT",
-             "email"=> "NA"
+             "email"=> "greatcollins13@gmail.com"
             ],
             [
              "id"=> 22,
@@ -196,7 +196,7 @@ class MemberSeeder extends Seeder
              "name"=> "Andyar Aondongu Andrew ",
              "ciltno"=> 207340,
              "membershipstatus"=> "MILT",
-             "email"=> "NA"
+             "email"=> "pilotandyar@gmail.com"
             ],
             [
              "id"=> 27,
@@ -217,7 +217,7 @@ class MemberSeeder extends Seeder
              "name"=> "Onyekachi Thaddaeus Agwara",
              "ciltno"=> 207326,
              "membershipstatus"=> "MILT",
-             "email"=> "NA"
+             "email"=> "kachiagwara@gmail.com"
             ],
             [
              "id"=> 30,
@@ -231,7 +231,7 @@ class MemberSeeder extends Seeder
              "name"=> "Kaizer, Precious",
              "ciltno"=> 205475,
              "membershipstatus"=> "AFFILIATE",
-             "email"=> "NA"
+             "email"=> "lordlaizer36@gmail.com"
             ],
             [
              "id"=> 32,
@@ -280,14 +280,14 @@ class MemberSeeder extends Seeder
              "name"=> "Chechet Tachio Iliya",
              "ciltno"=> 205478,
              "membershipstatus"=> "AFFILIATE",
-             "email"=> "NA"
+             "email"=> "chechet@yahoo.com"
             ],
             [
              "id"=> 39,
              "name"=> " Ekesiobi Chuwuemeka",
              "ciltno"=> 206136,
              "membershipstatus"=> "AFFILIATE",
-             "email"=> "NA"
+             "email"=> "cj.ekesiobi@gmail.com"
             ],
             [
              "id"=> 40,
@@ -364,7 +364,7 @@ class MemberSeeder extends Seeder
              "name"=> "Akpan Imobong Okon",
              "ciltno"=> 205483,
              "membershipstatus"=> "NA",
-             "email"=> "NA"
+             "email"=> "iniobong4good@yahoo.com"
             ],
             [
              "id"=> 51,
@@ -470,6 +470,20 @@ class MemberSeeder extends Seeder
              "ciltno"=> "NA",
              "membershipstatus"=> "NA",
              "email"=> "NA"
+            ],
+            [
+                "id"=> 66,
+                "name"=> "Affiah Maureen Afoma",
+                "ciltno"=> 203452,
+                "membershipstatus"=> "CMILT",
+                "email"=> "manwabueze@yahoo.com"
+            ],
+            [
+                "id"=> 67,
+                "name"=> "Dr. Ohaegbuchi Uchechukwu Magnus",
+                "ciltno"=> "NA",
+                "membershipstatus"=> "NA",
+                "email"=> "uchenery@gmail.com"
             ]
         ];
 

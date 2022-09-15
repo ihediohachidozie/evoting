@@ -27,12 +27,14 @@ class AddCandidateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
-        $members = Member::pluck('name', 'id');
-        $offices = Office::pluck('name', 'id');
-        return view('pages.candidate.create', compact('members', 'offices'));
+        $id = $request->id;
+        #$members = Member::pluck('name', 'id');
+        #$offices = Office::pluck('name', 'id');
+        $norminated = Normination::with('member', 'office')->where('member_id', $id)->get();
+        return view('pages.candidate.create', compact('norminated'));
 
     }
 
@@ -57,6 +59,7 @@ class AddCandidateController extends Controller
      */
     public function store(Request $request)
     {
+       // dd($request->all());
         $this->validateData();
 
 
@@ -100,7 +103,7 @@ class AddCandidateController extends Controller
             $count = Normination::where('member_id', $pin->id)->get();
             if($count != null){
                 if(count($count )> 1){
-                    return Redirect::route('candidates.create');
+                    return Redirect::route('candidates.create', ['id' => $pin->id]);
                 }else{
                     $status = 'You have not been norminated !';
                 }
