@@ -55,7 +55,7 @@
                 </div>
             @endif
             <hr class="my-4">
-            <h2 class="display-6 text-center my-4">Nominated Members</h2>
+            <h2 class="display-6 text-center my-4">Norminated Members</h2>
 
             <div class="table-responsive">
                 <table class="table text-center">

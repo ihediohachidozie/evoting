@@ -31,10 +31,19 @@ class AddCandidateController extends Controller
     {
         //
         $id = $request->id;
-        #$members = Member::pluck('name', 'id');
-        #$offices = Office::pluck('name', 'id');
-        $norminated = Normination::with('member', 'office')->where('member_id', $id)->get();
-        return view('pages.candidate.create', compact('norminated'));
+
+        $count = Normination::where('member_id', $id)->get();
+        if($count != null){
+            if(count($count )> 1){
+                $norminated = Normination::with('member', 'office')->where('member_id', $id)->get();
+                return view('pages.candidate.create', compact('norminated'));
+            }else{
+                $status = 'You have not been norminated !';
+            }
+        }
+
+        return  Redirect::route('candidates.index')->with(['status' => $status]);
+
 
     }
 
