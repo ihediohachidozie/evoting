@@ -35,7 +35,9 @@ class AddCandidateController extends Controller
         $count = Normination::where('member_id', $id)->get();
         if($count != null){
             if(count($count )> 1){
-                $norminated = Normination::with('member', 'office')->where('member_id', $id)->get();
+                $norminated = Normination::with('member', 'office')->where('member_id', $id)->get()->unique('office_id');
+              #  $norminated = $norminated->unique();
+                #dd($norminated[0]->member['name']);
                 return view('pages.candidate.create', compact('norminated'));
             }else{
                 $status = 'You have not been norminated !';
