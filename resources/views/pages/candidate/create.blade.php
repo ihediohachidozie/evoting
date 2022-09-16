@@ -68,6 +68,14 @@
                         Please upload the normination form.
                     </div>
                 </div>
+                <div class="mb-3 mt-3">
+                    <label for="formFile" class="form-label">Upload your CV (pdf format must be less than
+                        600kb)</label>
+                    <input class="form-control" type="file" id="resume" name="resume">
+                    <div class="invalid-feedback">
+                        Please upload the normination form.
+                    </div>
+                </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Upload Passport photograph (png, jpeg, jpg or gif format
                         must be less than 300kb)</label>

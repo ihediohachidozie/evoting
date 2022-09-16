@@ -56,7 +56,8 @@ class AddCandidateController extends Controller
             'member_id' => 'required',
             'office_id' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'norminationform' => 'required|mimes:pdf|max:2048'
+            'norminationform' => 'required|mimes:pdf|max:2048',
+            'resume' => 'required|mimes:pdf|max:2048'
 
         ]);
     }
@@ -79,15 +80,24 @@ class AddCandidateController extends Controller
                 'member_id' => $request->member_id,
                 'office_id' => $request->office_id,
                 'image' => $request->image->store('assets/candidates', 'public'),
-                'norminationform' => $request->norminationform->store('assets/norminationforms', 'public')
+                'norminationform' => $request->norminationform->store('assets/norminationforms', 'public'),
+                'resume' => $request->norminationform->store('assets/resume', 'public')
             ]);
 
             $candidate->save();
 
+            // normination form
             $fileName = time().'_'.$request->member_id.'.'.$request->norminationform->extension();
 
             $request->norminationform->move(public_path('assets/norminationforms'), $fileName);
 
+            // resume
+            $fileResume = time().'_'.$request->member_id.'.'.$request->resume->extension();
+
+            $request->resume->move(public_path('assets/resume'), $fileResume);
+
+
+            // image
             $imageName = time().'_'.$request->member_id.'.'.$request->image->extension();
 
 
