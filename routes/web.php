@@ -29,7 +29,7 @@ Route::post('/candidates/form', [AddCandidateController::class, 'showform'])->na
 Route::get('/accreditation', [AccreditationController::class, 'showform'])->name('accreditation.form');
 Route::post('/accreditation', [AccreditationController::class, 'accredit'])->name('accreditation.accredit');
 
-Route::resource('vote', VoteController::class);
+Route::resource('votes', VoteController::class);
 Route::get('vote', [VoteController::class, 'ballotcard'])->name('ballot-card');
 
 Route::resource('normination', NorminationController::class);
