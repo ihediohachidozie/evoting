@@ -17,18 +17,12 @@ class MemberUpdateSeeder extends Seeder
     {
         $members = [
             [
-                "id"=> 66,
-                "name"=> "Affiah Maureen Afoma",
-                "ciltno"=> 203452,
+                "id"=> 68,
+                "name"=> "Ohaegbuchi Uchechukwu Magnus",
+                "ciltno"=> 206289,
                 "membershipstatus"=> "CMILT",
-                "email"=> "manwabueze@yahoo.com"
-            ],
-            [
-                "id"=> 67,
-                "name"=> "Dr. Ohaegbuchi Uchechukwu Magnus",
-                "ciltno"=> "NA",
-                "membershipstatus"=> "NA",
-                "email"=> "uchenery@gmail.com"
+                "email"=> "NA",
+                "phone"=> "08037055177"
             ]
         ];
 

@@ -153,6 +153,15 @@ class NorminationController extends Controller
      */
     public function destroy(Normination $normination)
     {
-        //
+        Normination::find($normination->id)->delete();
+
+        return back();
+    }
+
+    public function list()
+    {
+        $norminations = Normination::all();
+
+        return view('pages.normination.list', compact('norminations'));
     }
 }

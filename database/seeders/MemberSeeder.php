@@ -484,6 +484,20 @@ class MemberSeeder extends Seeder
                 "ciltno"=> "NA",
                 "membershipstatus"=> "NA",
                 "email"=> "uchenery@gmail.com"
+            ],
+            [
+                "id"=> 66,
+                "name"=> "Affiah Maureen Afoma",
+                "ciltno"=> 203452,
+                "membershipstatus"=> "CMILT",
+                "email"=> "manwabueze@yahoo.com"
+            ],
+            [
+                "id"=> 67,
+                "name"=> "Dr. Ohaegbuchi Uchechukwu Magnus",
+                "ciltno"=> "NA",
+                "membershipstatus"=> "NA",
+                "email"=> "uchenery@gmail.com"
             ]
         ];
 

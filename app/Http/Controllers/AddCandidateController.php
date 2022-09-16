@@ -141,6 +141,16 @@ class AddCandidateController extends Controller
 
     }
 
+
+    public function list()
+    {
+       # dd('i m here');
+        # get all candidates..
+        $candidates = Candidate::all();
+
+        return view('pages.candidate.list', compact('candidates'));
+    }
+
     public function check($id)
     {
         return Candidate::where('member_id', $id)->get();
@@ -188,5 +198,8 @@ class AddCandidateController extends Controller
     public function destroy(Candidate $candidate)
     {
         //
+        Candidate::find($candidate->id)->delete();
+
+        return back();
     }
 }
