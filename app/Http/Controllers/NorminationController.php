@@ -161,7 +161,7 @@ class NorminationController extends Controller
     public function list()
     {
         $norminations = Normination::all();
-
-        return view('pages.normination.list', compact('norminations'));
+        $members = Member::pluck('name', 'id');
+        return view('pages.normination.list', compact('norminations', 'members'));
     }
 }

@@ -25,6 +25,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Office</th>
                             <th scope="col" class="text-center">Norminated By</th>
+
                             <th scope="col" class="text-center">Action</th>
                         </tr>
                     </tfoot>
@@ -33,8 +34,8 @@
                             <tr>
                                 <th scope="row">{{ $normination->member->name }}</th>
                                 <td>{{ strtoupper($normination->office->name) }}</td>
-                                <td>@include('pages.normination.getname')</td>
 
+                                <td>{{$members[$normination->norminating_id]}}</td>
                                 <td class="text-center">
                                     <form action="{{ route('normination.destroy', $normination) }}" method="post">
                                         @csrf

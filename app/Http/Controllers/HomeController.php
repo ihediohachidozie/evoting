@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
+use App\Models\Office;
+use App\Models\Normination;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $norminated_members = Normination::pluck('member_id')->unique()->count();
+        $candidates = Normination::with('member', 'office')->get()->unique();
+        $total_norminations = Normination::count();
+        $membership = Member::count();
+        #$n = Normination::select(DB::raw('count(member_id) as member'), DB::raw(('office_id) as Office')))->groupBy('member_id')->pluck('member_id', 'office_id');
+        #$n = Normination::select(DB::raw('count(member_id) as member'), 'office_id as Office')->groupBy('member_id')->pluck('member', 'office_id');
+        $n = Normination::select(DB::raw('count(member_id) as member'), 'office_id as Office')->groupBy('office_id')->pluck('member', 'Office');
+        $offices = Office::pluck('name', 'id');
+
+        //dd($candidates);
+        $office = [];
+        $members = [];
+
+        foreach($n as $key => $value)
+        {
+            array_push($office, $offices[$key]);
+            array_push($members, $value);
+
+        }
+
+       # dd(json_encode($members));
+
+        return view('home', compact('office', 'members', 'norminated_members', 'total_norminations', 'membership', 'candidates'));
     }
 }
