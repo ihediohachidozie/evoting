@@ -47,10 +47,10 @@
                         <label for="office" class="form-label">Offices Norminated</label>
                         <select class="form-select" id="office" name="office_id" required>
                             <option value="">Choose...</option>
-                            @for ($i = 0; $i < count($norminated); $i++)
-                                <option value="{{ $norminated[$i]->office['id'] }}">
-                                    {{ strtoupper($norminated[$i]->office['name']) }}</option>
-                            @endfor
+                           @foreach ($norminated as $key => $value)
+                           <option value="{{ $norminated[$key]->office['id'] }}">
+                            {{ strtoupper($norminated[$key]->office['name']) }}</option>
+                           @endforeach
                         </select>
                         <div class="invalid-feedback">
                             Please provide a valid Office.

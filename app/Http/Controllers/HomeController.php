@@ -28,12 +28,13 @@ class HomeController extends Controller
     public function index()
     {
         $norminated_members = Normination::pluck('member_id')->unique()->count();
-        $candidates = Normination::with('member', 'office')->get()->unique();
+        $candidates = Normination::with('member', 'office')->pluck('office_id', 'member_id')->unique();
         $total_norminations = Normination::count();
         $membership = Member::count();
-        #$n = Normination::select(DB::raw('count(member_id) as member'), DB::raw(('office_id) as Office')))->groupBy('member_id')->pluck('member_id', 'office_id');
-        #$n = Normination::select(DB::raw('count(member_id) as member'), 'office_id as Office')->groupBy('member_id')->pluck('member', 'office_id');
+        $membersx = Member::pluck('name', 'id');
+
         $n = Normination::select(DB::raw('count(member_id) as member'), 'office_id as Office')->groupBy('office_id')->pluck('member', 'Office');
+      // dd($n);
         $offices = Office::pluck('name', 'id');
 
         //dd($candidates);
@@ -49,6 +50,6 @@ class HomeController extends Controller
 
        # dd(json_encode($members));
 
-        return view('home', compact('office', 'members', 'norminated_members', 'total_norminations', 'membership', 'candidates'));
+        return view('home', compact('office', 'members', 'membersx', 'offices', 'norminated_members', 'total_norminations', 'membership', 'candidates'));
     }
 }

@@ -30,21 +30,29 @@ class AddCandidateController extends Controller
     public function create(Request $request)
     {
         //
-        $id = $request->id;
+        try {
+            //code...
+            $id = $request->id;
 
-        $count = Normination::where('member_id', $id)->get();
-        if($count != null){
-            if(count($count )> 1){
-                $norminated = Normination::with('member', 'office')->where('member_id', $id)->get()->unique('office_id');
-              #  $norminated = $norminated->unique();
-                #dd($norminated[0]->member['name']);
-                return view('pages.candidate.create', compact('norminated'));
-            }else{
-                $status = 'You have not been norminated !';
+            $count = Normination::where('member_id', $id)->get();
+            if($count != null){
+                if(count($count )> 1){
+                    $norminated = Normination::with('member', 'office')->where('member_id', $id)->get()->unique('office_id');
+                  #  $norminated = $norminated->unique();
+                //dd($norminated[0]->office->name);
+                    return view('pages.candidate.create', compact('norminated'));
+                }else{
+                    $status = 'You have not been norminated !';
+                }
             }
+
+            return  Redirect::route('candidates.index')->with(['status' => $status]);
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return  Redirect::route('candidates.index')->with(['status' => 'Try again something went wrong']);
         }
 
-        return  Redirect::route('candidates.index')->with(['status' => $status]);
 
 
     }
@@ -73,6 +81,9 @@ class AddCandidateController extends Controller
     {
        // dd($request->all());
         $this->validateData();
+        $memberName = Member::find($request->member_id)->name;
+        $memberName = str_replace(' ', '_', $memberName);
+
 
 
         if($this->check($request->member_id) != null && count($this->check($request->member_id)) == 0){
@@ -81,24 +92,24 @@ class AddCandidateController extends Controller
                 'office_id' => $request->office_id,
                 'image' => $request->image->store('assets/candidates', 'public'),
                 'norminationform' => $request->norminationform->store('assets/norminationforms', 'public'),
-                'resume' => $request->norminationform->store('assets/resume', 'public')
+                'resume' => $request->resume->store('assets/resume', 'public')
             ]);
 
             $candidate->save();
 
             // normination form
-            $fileName = time().'_'.$request->member_id.'.'.$request->norminationform->extension();
+            $fileName = time().'_normination_form_'.$memberName.'.'.$request->norminationform->extension();
 
             $request->norminationform->move(public_path('assets/norminationforms'), $fileName);
 
             // resume
-            $fileResume = time().'_'.$request->member_id.'.'.$request->resume->extension();
+            $fileResume = time().'_resume_'.$memberName.'.'.$request->resume->extension();
 
             $request->resume->move(public_path('assets/resume'), $fileResume);
 
 
             // image
-            $imageName = time().'_'.$request->member_id.'.'.$request->image->extension();
+            $imageName = time().'_image_'.$memberName.'.'.$request->image->extension();
 
 
             $img = Image::make($request->image)->fit(640, 428);
@@ -120,6 +131,7 @@ class AddCandidateController extends Controller
 
         $pin = Member::whereCiltno($request->pin)->first();
 
+        //dd($pin);
         if($pin != null){
             $count = Normination::where('member_id', $pin->id)->get();
             if($count != null){

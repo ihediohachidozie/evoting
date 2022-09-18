@@ -19,6 +19,10 @@ class NorminationController extends Controller
     {
         $id = $request->id;
 
+        if ($id == null && intval($id) == 0) {
+            # code...
+            return redirect()->route('normination.member');
+        }
 
         $members = Member::pluck('name', 'id');
         $offices = Office::pluck('name', 'id');
@@ -69,7 +73,10 @@ class NorminationController extends Controller
     public function store(Request $request)
     {
        // dd($request->all());
-
+       if ($request->id == null && intval($request->id) == 0) {
+        # code...
+        return redirect()->route('normination.member');
+    }
         $this->validation();
         if($this->check($request->id, $request->candidate_id, $request->office_id) == 0)
         {

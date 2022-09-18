@@ -37,29 +37,24 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $member = $this->validateData();
-            $status = '';
 
-            if($this->checkMember($member['ciltno']) == 0)
-            {
+        $member = $this->validateData();
+        $status = '';
 
-                $member['pin'] = random_int(1000, 9999);
+        if($this->checkMember($member['ciltno']) == 0)
+        {
 
-                Member::create($member);
-                $status = 'Member successfully added!';
-            }
-            else{
-                $status = 'Member with CILT No. already exist!';
-            }
+            $member['pin'] = random_int(1000, 9999);
 
-
-            return back()->with('success', $status);
-
-        } catch (\Throwable $th) {
-            $status = 'An error occurred. Process incomplete!';
-            return back()->with('success', $status);
+            Member::create($member);
+            $status = 'Member successfully added!';
         }
+        else{
+            $status = 'Member with CILT No. already exist!';
+        }
+
+
+        return back()->with('success', $status);
 
     }
 
@@ -72,10 +67,10 @@ class MemberController extends Controller
     {
         # code...
         return request()->validate([
+            'ciltno' => 'required|unique:members',
             'name' => 'required',
             'email' => 'required',
             'phone' => 'sometimes',
-            'ciltno' => 'required',
             'membershipstatus' => 'required',
             'canvote' => 'required'
 
@@ -113,29 +108,13 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
+        //code...
+        $data = $this->validateData();
 
-        try {
-            //code...
-            $data = $this->validateData();
+        Member::find($member->id)->update($data);
+        $status = 'Member successfully updated!';
 
-            if ($this->checkMember($member['ciltno']) == 1 || $this->checkMember($member['ciltno']) == 0)
-            {
-                Member::find($member->id)->update($data);
-                $status = 'Member successfully updated!';
-
-                return redirect()->route('members.index');
-            }
-        } catch (\Throwable $th) {
-            //throw $th;
-            $status = 'An error occurred. Process incomplete!';
-            return back()->with('success', $status);
-        }
-
-
-
-
-
-
+        return redirect()->route('members.index');
 
     }
 

@@ -78,10 +78,11 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($candidates as $c)
+
+                        @foreach ($candidates as $key => $value)
                             <tr>
-                                <td>{{ $c->member->name }}</td>
-                                <td>{{ strtoupper($c->office->name) }}</td>
+                                <td>{{ $membersx[$key] }}</td>
+                                <td>{{ strtoupper($offices[$value]) }}</td>
                             </tr>
                         @endforeach
 
