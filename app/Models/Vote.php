@@ -15,4 +15,13 @@ class Vote extends Model
     {
         return $this->belongsTo(Candidate::class);
     }
+    public function Member()
+    {
+        return $this->belongsTo(Member::class);
+    }
+
+    public function Office()
+    {
+        return $this->belongsTo(Office::class);
+    }
 }

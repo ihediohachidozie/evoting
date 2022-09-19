@@ -23,6 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
 
 Route::resource('candidates', AddCandidateController::class);
 Route::post('/candidates/form', [AddCandidateController::class, 'showform'])->name('candidate.form');
@@ -43,3 +44,6 @@ Route::get('/candidate/list', [AddCandidateController::class, 'list'])->name('ca
 
 Route::get('/norminations/list', [NorminationController::class, 'list'])->name('normination.list');
 
+
+
+Route::get('/thankyou', [VoteController::class, 'thankyou'])->name('thankyou');

@@ -17,44 +17,55 @@
         @include('pages.partials.nav')
 
         <main>
-            <form method="POST" accept="{{route('vote.store')}}">
+            <form method="POST" action="{{ route('votes.store') }}">
                 @csrf
-                @if (count($treasurer) != null)
-                    <div class="text-center">
-
-                        <h3>Chairman</h3>
-                        <hr class="my-4">
-                    </div>
-                    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                        @foreach ($treasurer as $item)
-                            <div class="col">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="{{ asset('storage/'.$item->image) }}" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="chairman"
-                                                id="{{$item->office->name}}" value="{{$item->member->id}}" checked>
-                                            <label class="form-check-label" for="{{$item->office->name}}">
-                                                {{$item->member->name}}
-                                            </label>
+                <input type="hidden" name="voter_id" value="{{$voter_id}}">
+                @foreach ($candidates as $candidate)
+                    @foreach ($offices as $office)
+                        @if ($candidate->office_id == $office->id)
+                            <div class="text-center">
+                                <h3>{{ strtoupper($office->name) }}</h3>
+                                <hr class="my-4">
+                            </div>
+                            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="{{ asset('storage/' . $candidate->image) }}" class="card-img-top"
+                                            alt="..." width="440" height="250">
+                                        <div class="card-body">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio"
+                                                    name="{{ str_replace(' ', '', $candidate->office_id) }}"
+                                                    id="{{ str_replace(' ', '', $candidate->office_id) }}"
+                                                    value="{{ $candidate->member->id }}">
+                                                <label class="form-check-label" for="{{ $candidate->office->name }}">
+                                                    {{ $candidate->member->name }}
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-                @endif
-
-
+                        @endif
+                    @endforeach
+                @endforeach
                 <button class="w-100 btn btn-primary btn-lg my-4" type="submit">Vote</button>
             </form>
-
-
-
-
         </main>
-        @include('pages.partials.footer')
     </div>
+    @include('pages.partials.footer')
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

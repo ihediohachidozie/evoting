@@ -39,19 +39,18 @@ class NorminationController extends Controller
 
     public function showform(Request $request)
     {
-        $pin = Member::whereCiltno($request->pin)->first();
+        $member = Member::whereCiltno($request->pin)->first();
 
-        if($pin != null){
-            Member::find($pin->id)->update(
+        if($member != null){
+            Member::find($member->id)->update(
                 ['accreditated' => 1]
             );
 
-            return Redirect::route('normination.index', ['id' => $pin->id]);
+            return Redirect::route('normination.index', ['id' => $member->id]);
 
         }
-        $status = 'Member does not exist!';
 
-        return back()->with(['status' => $status]);
+        return back()->with(['status' => 'Member does not exist!']);
 
     }
     /**

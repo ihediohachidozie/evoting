@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vote;
+use App\Models\Office;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
 
@@ -25,33 +26,12 @@ class VoteController extends Controller
      */
     public function create(Request $request)
     {
-        $id = $request->id;
-        $candidates = Candidate::all();
-
-        $chairmans = Candidate::where('office_id', 1)->get();
-        $vicechairmans = Candidate::where('office_id', 2)->get();
-        $branchsecretarys = Candidate::where('office_id', 3)->get();
-        $assistbranchsecretarys = Candidate::where('office_id', 4)->get();
-        $treasurer = Candidate::where('office_id', 5)->get();
-        $financialsecretary = Candidate::where('office_id', 6)->get();
-        $pro = Candidate::where('office_id', 7)->get();
-        $welfareofficer = Candidate::where('office_id', 8)->get();
-        $wilatrep = Candidate::where('office_id', 9)->get();
-        $nextgenerationrep = Candidate::where('office_id', 10)->get();
-        $aviationmoderep = Candidate::where('office_id', 11)->get();
-        $maritimemoderep = Candidate::where('office_id', 12)->get();
-        $railmoderep = Candidate::where('office_id', 13)->get();
-        $pipelinemoderep = Candidate::where('office_id', 14)->get();
-        $logisticsmoderep = Candidate::where('office_id', 15)->get();
-        $roadmoderep = Candidate::where('office_id', 16)->get();
+        $voter_id = $request->id;
+        $offices = Office::get();
+        $candidates = Candidate::orderBy('office_id')->get();
 
 
-        return view('pages.vote.create', compact(
-            'id', 'chairmans', 'vicechairmans', 'branchsecretarys', 'assistbranchsecretarys',
-            'treasurer', 'financialsecretary', 'pro', 'welfareofficer', 'nextgenerationrep',
-            'aviationmoderep', 'maritimemoderep', 'railmoderep', 'pipelinemoderep',
-            'logisticsmoderep', 'roadmoderep'
-        ));
+        return view('pages.vote.create', compact('offices', 'candidates', 'voter_id'));
     }
 
     public function ballotcard(Request $request)
@@ -71,8 +51,36 @@ class VoteController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+
+        $data = $request->input();
+
+        $check = Vote::where('voter_id', $request->voter_id)->count();
+
+        if($check != 0){
+
+            return redirect()->route('accreditation.form')->with('status', 'Member has already voted!');
+
+        }
+        foreach ($data as $key => $value) {
+            if($key != '_token' && $key != 'voter_id'){
+
+                $vote = new Vote();
+                $vote->member_id = $value;
+                $vote->voter_id = $data['voter_id'];
+                $vote->office_id = $key;
+                $vote->save();
+            }
+        }
         //
+
+        return redirect()->route('thankyou')->with('status', 'Voting process completed');
+    }
+
+
+    public function thankyou()
+    {
+        return view('pages.vote.thankyou');
+        # code...
     }
 
     /**

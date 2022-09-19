@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vote;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Laravel\Ui\Presets\React;
@@ -19,19 +20,26 @@ class AccreditationController extends Controller
     public function accredit(Request $request)
     {
 
-        $pin = Member::wherePin($request->pin)->first();
+        $member = Member::wherePin($request->pin)->first();
 
-        if($pin != null){
-            Member::find($pin->id)->update(
+        $check = Vote::where('voter_id', $member->id)->count();
+
+        if($check != 0){
+
+            return redirect()->route('accreditation.form')->with('status', 'Member has already voted!');
+
+        }
+
+        if($member != null){
+            Member::find($member->id)->update(
                 ['accreditated' => 1]
             );
 
-            return Redirect::route('vote.create', ['id' => $pin->id]);
+            return Redirect::route('votes.create', ['id' => $member->id]);
 
         }
-        $status = 'Member does not exist!';
 
-        return back()->with(['status' => $status]);
+        return back()->with(['status' => 'Member does not exist!']);
         # code...
     }
 }
