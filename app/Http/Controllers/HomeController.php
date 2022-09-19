@@ -65,8 +65,8 @@ class HomeController extends Controller
 
         $offices = Office::pluck('name', 'id');
 
-        $v = Vote::get()->groupBy('member_id')->pluck('member_id', 'office_id');
-        dd($v);
+       # $v = Vote::get()->groupBy('member_id')->pluck('member_id', 'office_id');
+        #dd($v);
 
         $office = [];
         $members = [];

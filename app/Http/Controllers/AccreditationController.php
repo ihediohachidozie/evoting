@@ -22,15 +22,19 @@ class AccreditationController extends Controller
 
         $member = Member::wherePin($request->pin)->first();
 
-        $check = Vote::where('voter_id', $member->id)->count();
+        $count = Member::wherePin($request->pin)->count();
 
-        if($check != 0){
 
-            return redirect()->route('accreditation.form')->with('status', 'Member has already voted!');
 
-        }
+        if($count != 0){
 
-        if($member != null){
+            $check = Vote::where('voter_id', $member->id)->count();
+
+            if($check != 0){
+
+                return redirect()->route('accreditation.form')->with('status', 'Member has already voted!');
+
+            }
             Member::find($member->id)->update(
                 ['accreditated' => 1]
             );
