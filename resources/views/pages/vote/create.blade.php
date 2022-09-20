@@ -52,26 +52,8 @@
                 <button class="w-100 btn btn-primary btn-lg my-4" type="submit">Vote</button>
             </form>
         </main>
+        @include('pages.partials.footer')
     </div>
-    @include('pages.partials.footer')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 
