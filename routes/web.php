@@ -47,3 +47,4 @@ Route::get('/norminations/list', [NorminationController::class, 'list'])->name('
 
 
 Route::get('/thankyou', [VoteController::class, 'thankyou'])->name('thankyou');
+Route::get('/statistics', [VoteController::class, 'statistics'])->name('statistics');

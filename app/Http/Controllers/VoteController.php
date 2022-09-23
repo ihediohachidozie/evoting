@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vote;
+use App\Models\Member;
 use App\Models\Office;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VoteController extends Controller
 {
@@ -42,6 +44,23 @@ class VoteController extends Controller
         return view('pages.vote.create', compact('id'));
     }
 
+    public function statistics()
+    {
+        # code...
+        $accreditated = Member::where('accreditated', 1)->count();
+        $nonaccreditated = Member::where('accreditated', 0)->count();
+        $votes = Vote::count();
+        $office = Office::pluck('name', 'id');
+        $elected_offices = [];
+       // $vote = [];
+        $candidates = Vote::select(DB::raw('count(voter_id) as Votes'), 'office_id as Office')->groupBy('office_id')->pluck('Votes', 'Office');
+        $vote = Vote::get()->unique('voter_id')->count();
+       // dd($voters);
+
+
+        //dd(json_encode($voters));
+        return view('pages.vote.statistics', compact('candidates', 'accreditated', 'nonaccreditated', 'votes', 'office', 'elected_offices', 'vote'));
+    }
 
     /**
      * Store a newly created resource in storage.

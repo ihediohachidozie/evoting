@@ -83,7 +83,11 @@
                         </a>
                         <a class="nav-link" href="{{route('normination.list')}}">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Norminated Members
+                            Nominees
+                        </a>
+                        <a class="nav-link" href="{{route('test')}}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Election Results
                         </a>
                     </div>
                 </div>

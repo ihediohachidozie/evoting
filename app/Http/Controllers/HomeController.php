@@ -26,26 +26,34 @@ class HomeController extends Controller
     {
         $members = Member::pluck('name', 'id');
         $offices = Office::pluck('name', 'id');
-        $candidates = Candidate::pluck('member_id');
+        $candidates = Candidate::get();
 
         $data = DB::table('votes')
                 ->selectRaw('count(voter_id) as Votes, member_id as Member, office_id as Office')
                 ->groupBy('member_id')
+                ->orderBy('office_id', 'asc')
                 ->get();
 
 
-        dd($members[$data[0]->Member] .' - '. $data[0]->Votes . ' Votes'. ' for '.$offices[$data[0]->Office]);
+            //    dd($candidates[$data[0]->Member]->image);
+       // dd($members[$data[0]->Member] .' - '. $data[0]->Votes . ' Votes - '.strtoupper($offices[$data[0]->Office]) .' - '. $candidates[$data[0]->Member]->image);
 
 
-        $data = [];
-        foreach ($candidates as $candidate)
+        $results = [];
+
+        foreach ($data as $item) {
+            # code...
+        }
+/*         foreach ($candidates as $key => $value)
         {
-            $votes = Vote::where('member_id', $candidate)->get();
-            $data[$members[$candidate]] = count($votes);
+            $votes = Vote::where('member_id', $value)->get();
+            $data[$members[$value]] = count($votes) ;
+            //$data['Office'] = $offices[$votes[$candidate]->office_id];
 
         }
-
-        dd($data);
+ */
+       // dd($data);
+       return view('pages.candidate.results', compact('data', 'offices', 'members', 'candidates'));
     }
     /**
      * Show the application dashboard.

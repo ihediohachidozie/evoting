@@ -12,30 +12,32 @@
             </ul>
         </div>
         <div class="col-6 col-md">
-{{--             <h5>Resources</h5>
+            <h5>Menu</h5>
             <ul class="list-unstyled text-small">
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a>
+
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="{{route('normination.member')}}">Nomination</a>
                 </li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource
-                        name</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another
-                        resource</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final
-                        resource</a></li>
-            </ul> --}}
+                <li class="mb-1"><a class="link-secondary text-decoration-none" href="{{route('candidates.index')}}">Nomination Form
+                    </a></li>
+            </ul>
+
+
         </div>
         <div class="col-6 col-md">
-{{--             <h5>About</h5>
-            <ul class="list-unstyled text-small">
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a>
-                </li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none"
-                        href="#">Locations</a></li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a>
-                </li>
-                <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a>
-                </li>
-            </ul> --}}
+            {{--
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a>
+                    </li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none"
+                            href="#">Locations</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a>
+                    </li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a>
+                    </li>
+                </ul>
+            --}}
         </div>
     </div>
+
 </footer>

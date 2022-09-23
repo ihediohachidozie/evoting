@@ -67,7 +67,7 @@ class MemberController extends Controller
     {
         # code...
         return request()->validate([
-            'ciltno' => 'required|unique:members',
+            'ciltno' => 'required|unique:members,id',
             'name' => 'required',
             'email' => 'required',
             'phone' => 'sometimes',
